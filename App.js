@@ -1,117 +1,71 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
 
-import React from 'react';
-import type {Node} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import React, { useState } from 'react';
+import{Text,Image, TextInput,View} from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+const name="Xulo";
 
-/* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
- * LTI update could not be added via codemod */
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
+export default function App(){
+  const [userName]= useState("Pruebita de los useState");
 
-const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
 
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Jose Manuel Rodriguez Corte">
-            Editar <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
+  const myconst = (myVariable)=>{
+  
+    
+    return(
+      myVariable
+      );
+  }
+
+  const Human = (props)=>{
+  
+    
+    return(
+        <View>
+          <Text>Nombre: {props.name}</Text>
+          <Text>Altura: {props.altura}</Text>
         </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-};
+      );
+  }
 
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
+  return(
 
-export default App;
+    <View>
+      <Text>{myconst("Dime tu nombre de "+name)}</Text>
+
+      <Text> </Text>
+
+      <TextInput
+       style={{
+          height: 40,
+          borderColor: 'gray',
+          borderWidth: 2 
+      }}
+      
+      defaultValue="texto de ejemplo"
+      />
+      <Text> </Text>
+
+      <Text>{userName}</Text>
+
+      <Text> </Text>
+
+      <Text> Los mejores nombres son: </Text>
+
+      <Text> </Text>
+      
+      <Human name= " Paquirrin" altura= "2.5"/> 
+      <Text> </Text>
+      <Human name= " Jovani Vazquez" altura= "4.5"/> 
+      <Text> </Text>
+      <Human name= " Paco Gutierrez" altura= "1.5"/> 
+      
+      
+      
+
+    </View>
+  )
+
+}
+
+
