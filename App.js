@@ -20,9 +20,20 @@ const styles = StyleSheet.create({
   },
 });
 
+export function mostrarResult(edad){
+  
+  return(
+    (edad < 18 ? <Text style={styles.Rojo}>Menor de edad </Text> : <Text style={styles.Verde}>Mayor de edad </Text>)
+  )
+
+}
+
+
+   
 
 const nombre = 'Jose'
 const apellidos= 'cortes'
+
 
 export default function App(){
     const color=null
@@ -31,19 +42,22 @@ export default function App(){
     
    
   return(
-    
+   
    <View>
      
      <Text  > </Text>
-      <Text style={styles.Azul} >{"hola "+nombre  +" "+ apellidos} </Text>
+      <Text  style={styles.Azul} >{"hola "+ nombre +" "+ apellidos} </Text>
+
+      <Text  > </Text>
+
        <Text>DIME TU EDAD</Text>
 
       
-
+       <Text  > </Text>
      <TextInput
        style={{
           height: 40,
-          borderColor: 'gray',
+          borderColor: 'green',
           borderWidth: 2,
          
 
@@ -52,11 +66,11 @@ export default function App(){
       onChangeText={edad => setEdad(edad)} 
       defaultValue="EDAD"/>
       
-      
+      <Text  > </Text>
       <Button
-        title="FINALIZAR"onPress={() =>  }/>
-      <Text> {edad}</Text>
-     
+        title="FINALIZAR"onPress={() =>  {mostrarResult(edad)}}/>
+      
+      <Text style={{ color: 'black'}}  >{mostrarResult(edad)}</Text>
 
    </View>
     
@@ -65,4 +79,4 @@ export default function App(){
 }
 
 
-//(edad < 18 ? <Text style={styles.Rojo}>Menor de edad </Text> : <Text style={styles.Verde}>Mayor de edad </Text>)
+//<Text >{mostrarResult(edad)}</Text>
