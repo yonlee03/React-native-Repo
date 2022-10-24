@@ -1,71 +1,68 @@
 
 import React, { useState } from 'react';
-import{Text,Image, TextInput,View} from 'react-native';
+import{Text,Image, TextInput,View, StyleSheet, onChangeText,Button, Alert} from 'react-native';
 
-const name="Xulo";
+const styles = StyleSheet.create({
+  Verde: {
+    color: 'green',
+    fontWeight: 'bold',
+    fontSize: 15,
+  },
+  Rojo: {
+    color: 'red',
+    fontWeight: 'bold',
+    fontSize: 15,
+  },
+  Azul: {
+    color: 'blue',
+    fontWeight: 'bold',
+    fontSize: 15,
+  },
+});
+
+
+const nombre = 'Jose'
+const apellidos= 'cortes'
 
 export default function App(){
-  const [userName]= useState("Pruebita de los useState");
+    const color=null
+    const [edad, setEdad] = useState(' ')
 
-
-
-  const myconst = (myVariable)=>{
-  
     
-    return(
-      myVariable
-      );
-  }
-
-  const Human = (props)=>{
-  
-    
-    return(
-        <View>
-          <Text>Nombre: {props.name}</Text>
-          <Text>Altura: {props.altura}</Text>
-        </View>
-      );
-  }
-
+   
   return(
+    
+   <View>
+     
+     <Text  > </Text>
+      <Text style={styles.Azul} >{"hola "+nombre  +" "+ apellidos} </Text>
+       <Text>DIME TU EDAD</Text>
 
-    <View>
-      <Text>{myconst("Dime tu nombre de "+name)}</Text>
+      
 
-      <Text> </Text>
-
-      <TextInput
+     <TextInput
        style={{
           height: 40,
           borderColor: 'gray',
-          borderWidth: 2 
+          borderWidth: 2,
+         
+
       }}
-      
-      defaultValue="texto de ejemplo"
-      />
-      <Text> </Text>
-
-      <Text>{userName}</Text>
-
-      <Text> </Text>
-
-      <Text> Los mejores nombres son: </Text>
-
-      <Text> </Text>
-      
-      <Human name= " Paquirrin" altura= "2.5"/> 
-      <Text> </Text>
-      <Human name= " Jovani Vazquez" altura= "4.5"/> 
-      <Text> </Text>
-      <Human name= " Paco Gutierrez" altura= "1.5"/> 
+      value={edad}
+      onChangeText={edad => setEdad(edad)} 
+      defaultValue="EDAD"/>
       
       
-      
+      <Button
+        title="FINALIZAR"onPress={() =>  }/>
+      <Text> {edad}</Text>
+     
 
-    </View>
-  )
+   </View>
+    
+  );
 
 }
 
 
+//(edad < 18 ? <Text style={styles.Rojo}>Menor de edad </Text> : <Text style={styles.Verde}>Mayor de edad </Text>)
