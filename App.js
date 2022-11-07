@@ -1,95 +1,28 @@
-
-import React, { useState } from 'react';
-import { Text, Image, TextInput, View, StyleSheet, onChangeText, Button, Alert } from 'react-native';
-
-const styles = StyleSheet.create({
-
-  Verde: {
-    color: "green",
-    fontWeight: 'bold',
-    fontSize: 15,
-  },
-  Rojo: {
-    color: "red",
-    fontWeight: 'bold',
-    fontSize: 15,
-  },
-  Azul: {
-    color: "#3393FF",
-    fontWeight: 'bold',
-    
-  },
-
-  Centrado: {
-    color: "#58E0F6",
-    fontWeight: 'bold',
-    fontSize: 15,
-    textAlign: "center",
-  },
-
-  Texto1:{
-    fontSize: 13,
-    textAlign: "center",
-  }
-
-});
-
-
-
-
-const nombre = <Text style={[styles.Azul]}>Jose Manuel</Text>;
-const apellidos = <Text style={[styles.Azul]}>Rodriguez Cortes</Text>;
-
+import React, {useState} from 'react';
+import { Text, Image, TextInput, View, Switch  } from 'react-native';
 
 export default function App() {
-  
-  const [edad, setEdad] = useState(' ')
-  const [Texto, setTexto] = useState(null);
+const[isEnabled,setIsEnabled]= useState();
 
-  const resultado = () => {
-    (edad < 18 ? setTexto(<Text style={styles.Rojo}>Menor de edad </Text>) : setTexto(<Text style={styles.Verde}>Mayor de edad </Text>))
-  }
-
-
-
-  return (
-
-    <View>
-
-      <Text  > </Text>
-      <Text style={styles.Texto1}>Mi nombre es {nombre} y me apellido {apellidos} </Text>
-
-      <Text  > </Text>
-
-      <Text style={styles.Centrado}>DIME TU EDAD</Text>
-
-
-      <Text  > </Text>
-      <TextInput
-        style={{
-          height: 40,
-          borderColor: "#3198EE",
-          borderWidth: 2,
-
-
-        }}
-        value={edad}
-        onChangeText={edad => setEdad(edad)}
-        defaultValue="EDAD" />
-
-      <Text  > </Text>
-      <Button
-        title="FINALIZAR"
-        onPress={resultado} />
-
-      <Text  > </Text>
-
-      <Text style={styles.Centrado}>{Texto}</Text>
-
-    </View>
-
-  );
-
+return(
+<View style={{alignItems:'center', marginTop:30, backgroundColor:'black'}} >
+<Switch
+trackColor={{false:'white', true:'grey'}}
+thumbColor={isEnabled ? 'darkblue':'yellow'}
+onValueChange={()=> setIsEnabled(previusState => !previusState)}
+value={isEnabled}
+/>
+  <Image style={{width: 350, height:350}}
+  source={{
+  uri: 'https://media.tenor.com/vcXlB9xoqlIAAAAC/bob-esponja.gif'
+  }}/>
+ <Text style={{color:'white'}}>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</Text>
+ <Image style={{width: 350, height:300}}
+  source={{
+  uri: 'https://press.parentesys.com/gratis/img/33551/33551_0750109001588362112.webp'
+  }}/> 
+</View>
+);
 }
 
 
