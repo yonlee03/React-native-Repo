@@ -14,7 +14,7 @@ export default function App() {
 
   return (
     <View style={styles.CentradoV}>
-      <Text style={styles.Centrado}>FORM</Text>
+      <Text style={styles.Centrado}>FORM!</Text>
 
       <View style={styles.TextoV}>
         <Text style={styles.Texto}>DIME TU NOMBRE  </Text>
