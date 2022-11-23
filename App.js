@@ -1,139 +1,63 @@
-import React, { useState } from 'react';
-import { Text, Image, TextInput, View, StyleSheet, Button, Switch } from 'react-native';
+import React from 'react';
+import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-export default function App() {
-  const [nombre, setNombre] = useState('')
-  const [apellidos, setApellidos] = useState('')
-  const [edad, setEdad] = useState('')
-  const [correo, setCorreo] = useState('')
-  const [sexo, setSexo] = useState('')
-  const [texto, setTexto] = useState(null);
-  const [isEnabled, setIsEnabled] = useState();
-  const [display, setDisplay] = useState();
-  
-  const resultado = () => {
-      setDisplay('on')
-      if(display=='on'){
-        setTexto('Mi nombre es '+nombre+'\nMis apellidos son '+apellidos+
-        '\nMis edad es '+edad+'\nMis correo es '+correo+'\nMis sexo es '+sexo)
-      }
+export default function() {
+const DATA = [
+{ id: '1',
+title: 'Pedro',
+Icon: 'wan',},
+{ id: '2',
+title: 'Jose',
+Icon: 'alien',},
+{ id: '3',
+title: 'Paco',
+Icon: 'alpha-i-box',},
+{ id: '4',
+title: 'Martin',
+Icon: 'alpha-j-box',},
+{ id: '5',
+title: 'Lucia',
+Icon: 'alpha-l-circle-outline',},
+];
+
+
+  const renderItem = ({ item }) => {
+    return (
+      <View style={styles.item}>
+    <Text style={styles.title}>{item.title}</Text>
+    <Icon name={item.Icon} size={100} color="#4F8EF7"/>
+  </View>
+    )
   }
 
   return (
-    <View style={styles.CentradoV}>
-      <Text style={styles.Centrado}>FORM</Text>
-
-      <View style={styles.TextoV}>
-        <Text style={styles.Texto}>DIME TU NOMBRE  </Text>
-        <TextInput style={styles.TextImp}
-          onChangeText={nombre => setNombre(nombre)}
-          value={nombre}
-          defaultValue="Nombre" />
-      </View>
-      <View style={styles.TextoV}>
-        <Text style={styles.Texto}>DIME TU APELLIDO</Text>
-        <TextInput style={styles.TextImp}
-          value={apellidos}
-          onChangeText={apellidos => setApellidos(apellidos)}
-          defaultValue="APELLIDO" />
-      </View>
-
-      <View style={styles.TextoV}>
-        <Text style={styles.Texto}>DIME TU EDAD        </Text>
-        <TextInput style={styles.TextImp}
-          value={edad}
-          onChangeText={edad => setEdad(edad)}
-          defaultValue="EDAD" />
-      </View>
-
-      <View style={styles.TextoV}>
-        <Text style={styles.Texto}>DIME TU CORREO  </Text>
-        <TextInput style={styles.TextImp}
-          value={correo}
-          onChangeText={correo => setCorreo(correo)}
-          defaultValue="CORREO" />
-      </View>
-
-      <View style={styles.TextoV}>
-      <Text style={styles.Texto}>Hombre                       </Text>
-        <Switch
-          Text={{ false: 'white', true: 'grey' }}
-          trackColor={{ false: 'white', true: 'grey' }}
-          thumbColor={isEnabled ? 'pink' : '#58E0F6'}
-          onValueChange={() => setIsEnabled(previusState => !previusState)}
-          value={isEnabled}
-           />
-          <Text style={styles.Texto}>                    Mujer</Text>
-      </View>
-      <Button 
-          title="FINALIZAR"
-          onPress={resultado} />
-          
-      <Text style={styles.Azul}>{texto}</Text>
+    <SafeAreaView style={styles.container}>
       
-    </View>
+      <FlatList
+        data={DATA}
+        renderItem={renderItem}
+        keyExtractor={item => item.id}
+      />
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  Verde: {
-    color: "green",
-    fontWeight: 'bold',
-    fontSize: 15,
+  container: {
+    flex: 1,
+    marginTop: StatusBar.currentHeight || 0,
+    backgroundColor:'#000001',
   },
-  Rojo: {
-    color: "red",
-    fontWeight: 'bold',
-    fontSize: 15,
-  },
-  Azul: {
-    marginTop:20,
-    color: "#3393FF",
-    fontWeight: 'bold',
-    fontSize:20,
-  },
-  Centrado: {
-    marginTop:170,
-    color: "#58E0F6",
-    fontWeight: 'bold',
-    fontSize: 50,
-    alignItems: 'center',
-    textAlign: "center",
-  },
-  CentradoV: {
-    flex:1,
-    backgroundColor:'black',
-    color: "#58E0F6",
-    fontWeight: 'bold',
-    fontSize: 15,
-    alignItems: 'center',
-    textAlign: "center",
-  },
-  TextoV: {
-    flexDirection: 'row',
-    marginTop: 20,
-    fontSize: 15,
-  },
-  Texto: {
-    marginTop: 9,
-    fontSize: 15,
-    
-    marginLeft:20,
-    marginBottom:10,
-    color:'white'
-  },
-  TextImp: {
-    marginLeft: 20,
-    height: 40,
-    width: 170,
+  item: {
+    backgroundColor: 'darkblue',
     color:'white',
-    textAlign: "center",
-    borderColor: "#3198EE",
-    borderWidth: 2,
+    padding: 10,
+    marginVertical: 8,
+    marginHorizontal: 16,
   },
-  Boton: {
-    marginTop: 9,
+  title: {
     fontSize: 15,
+    color:'white',
   },
 });
-
